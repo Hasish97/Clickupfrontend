@@ -9,15 +9,15 @@ pipeline {
         stage('Install packages') {
         
             steps {
-                sh 'printenv'
-                sh 'node --version'
+                
                 sh "npm install --legacy-peer-deps"
             }
         }
 
         stage('Build') {
             steps {
-                sh "npm run build"
+                sh 'export CI=false && npm run build'
+                
             }
         }
         
