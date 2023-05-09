@@ -6,6 +6,13 @@ pipeline {
     }
 
     stages {
+
+        stage('Clean') {
+            steps {
+                sh 'npm run clean'
+            }
+        }
+        
         stage('Install packages') {
         
             steps {
@@ -21,7 +28,20 @@ pipeline {
             }
         }
         
+        stage('copy build to ngnx') {
         
+            steps {
+                sh "sudo rm -rf /usr/share/nginx/html/build"
+                sh "cp -r /var/lib/jenkins/workspace/Frontend/build /usr/share/nginx/html"
+            }
+        }
+        stage('restart nginx') {
+        
+            steps {
+                
+                sh "sudo systemctl restart nginx"
+            }
+        }
         
             
         }
