@@ -10,6 +10,7 @@ pipeline {
         stage('Clean') {
             steps {
                 sh 'rm -rf build'
+                sh 'rm -rf node_modules'
             }
         }
 
@@ -32,14 +33,14 @@ pipeline {
         
             steps {
                 sh "sudo rm -rf /usr/share/nginx/html/build"
-                sh "cp -r /var/lib/jenkins/workspace/Frontend/build /usr/share/nginx/html"
+                sh "sudo cp -r /var/lib/jenkins/workspace/Frontend/build /usr/share/nginx/html"
             }
         }
         stage('restart nginx') {
         
             steps {
                 
-                sh "sudo systemctl restart nginx"
+                sh "systemctl restart nginx"
            }
         }
         
