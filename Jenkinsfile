@@ -29,18 +29,18 @@ pipeline {
             }
         }
         
-        stage('copy build to nginx') {
+        stage('Serve build') {
         
             steps {
                 sh "sudo rm -rf /usr/share/nginx/html/build"
                 sh "sudo cp -r /var/lib/jenkins/workspace/Frontend/build /usr/share/nginx/html"
             }
         }
-        stage('restart nginx') {
+        stage('Restart nginx') {
         
             steps {
                 
-                sh "systemctl restart nginx"
+                sh "sudo systemctl restart nginx"
            }
         }
         
