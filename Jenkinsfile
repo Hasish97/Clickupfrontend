@@ -28,7 +28,7 @@ pipeline {
             }
         }
         
-        stage('copy build to ngnx') {
+        stage('copy build to nginx') {
         
             steps {
                 sh "sudo rm -rf /usr/share/nginx/html/build"
