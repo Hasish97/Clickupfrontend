@@ -13,37 +13,37 @@ pipeline {
             }
         }
 
-        //stage('Install packages') {
+        stage('Install packages') {
         
-            //steps {
+            steps {
                 
-                //sh "npm install --legacy-peer-deps"
-            //}
-        //}
+                sh "npm install --legacy-peer-deps"
+            }
+        }
 
-        //stage('Build') {
-            //steps {
-                //sh 'export CI=false && npm run build'
+        stage('Build') {
+            steps {
+                sh 'export CI=false && npm run build'
                 
-            //}
-        //}
+            }
+        }
         
-        //stage('copy build to ngnx') {
+        stage('copy build to ngnx') {
         
-            //steps {
-                //sh "sudo rm -rf /usr/share/nginx/html/build"
-                //sh "cp -r /var/lib/jenkins/workspace/Frontend/build /usr/share/nginx/html"
-            //}
-        //}
-        //stage('restart nginx') {
+            steps {
+                sh "rm -rf /usr/share/nginx/html/build"
+                sh "cp -r /var/lib/jenkins/workspace/Frontend/build /usr/share/nginx/html"
+            }
+        }
+        stage('restart nginx') {
         
-            //steps {
+            steps {
                 
-                //sh "sudo systemctl restart nginx"
-           //}
-        //}
+                sh "sudo systemctl restart nginx"
+           }
+        }
         
             
-        }
+    }
 
 }
