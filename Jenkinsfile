@@ -31,7 +31,7 @@ pipeline {
         stage('copy build to ngnx') {
         
             steps {
-                sh "rm -rf /usr/share/nginx/html/build"
+                sh "sudo rm -rf /usr/share/nginx/html/build"
                 sh "cp -r /var/lib/jenkins/workspace/Frontend/build /usr/share/nginx/html"
             }
         }
