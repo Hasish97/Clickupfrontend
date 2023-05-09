@@ -9,39 +9,39 @@ pipeline {
 
         stage('Clean') {
             steps {
-                sh 'npm run clean'
-            }
-        }
-        
-        stage('Install packages') {
-        
-            steps {
-                
-                sh "npm install --legacy-peer-deps"
+                sh 'rm -rf build'
             }
         }
 
-        stage('Build') {
-            steps {
-                sh 'export CI=false && npm run build'
+        //stage('Install packages') {
+        
+            //steps {
                 
-            }
-        }
-        
-        stage('copy build to ngnx') {
-        
-            steps {
-                sh "sudo rm -rf /usr/share/nginx/html/build"
-                sh "cp -r /var/lib/jenkins/workspace/Frontend/build /usr/share/nginx/html"
-            }
-        }
-        stage('restart nginx') {
-        
-            steps {
+                //sh "npm install --legacy-peer-deps"
+            //}
+        //}
+
+        //stage('Build') {
+            //steps {
+                //sh 'export CI=false && npm run build'
                 
-                sh "sudo systemctl restart nginx"
-            }
-        }
+            //}
+        //}
+        
+        //stage('copy build to ngnx') {
+        
+            //steps {
+                //sh "sudo rm -rf /usr/share/nginx/html/build"
+                //sh "cp -r /var/lib/jenkins/workspace/Frontend/build /usr/share/nginx/html"
+            //}
+        //}
+        //stage('restart nginx') {
+        
+            //steps {
+                
+                //sh "sudo systemctl restart nginx"
+           //}
+        //}
         
             
         }
